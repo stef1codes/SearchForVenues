@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AndroidAssesmentTest</string>
+    <string name="title_activity_venue_details">VenueDetailsActivity</string>
+</resources>
