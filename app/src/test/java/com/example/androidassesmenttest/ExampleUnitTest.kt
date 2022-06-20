@@ -1,5 +1,7 @@
 package com.example.androidassesmenttest
 
+import com.example.androidassesmenttest.usecases.usecases.GetVenuesFromRemoteUsecase
+import io.mockk.mockk
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -9,6 +11,9 @@ import org.junit.Test
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
+
+    private val getVenuesFromRemoteUsecase = mockk<GetVenuesFromRemoteUsecase>()
+
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)

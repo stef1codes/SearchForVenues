@@ -5,7 +5,6 @@ import com.example.androidassesmenttest.data.local.VenueDatabase
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
-
 val roomModule = module {
 
     single {
@@ -14,8 +13,4 @@ val roomModule = module {
     }
 
     single { get<VenueDatabase>().venueDao }
-
-
 }
-
-

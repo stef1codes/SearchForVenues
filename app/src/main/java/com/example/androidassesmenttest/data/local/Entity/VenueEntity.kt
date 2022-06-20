@@ -8,8 +8,8 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "venue_table")
 data class VenueEntity(
     @PrimaryKey @ColumnInfo("fsq_id")
-    val fsqId: String="",
-    val distance: Int? =null,
-    val name: String?="",
+    val fsqId: String = "",
+    val distance: Int? = null,
+    val name: String? = "",
     @Embedded val location: LocationEntity? = LocationEntity(),
-    )
+)

@@ -42,6 +42,4 @@ class VenuesRepositoryImpl(
     override suspend fun getVenueWithCategories(id: String): List<VenueDetailxCategoriesxIcon> {
         return db.venueDao.getVenueDetailWithCategories(id).first()
     }
-
-
 }

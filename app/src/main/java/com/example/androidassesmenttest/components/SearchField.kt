@@ -29,12 +29,15 @@ fun SearchField(
             Text(
                 fontWeight = FontWeight.Thin,
                 text = text,
-                color = Color.White)
+                color = Color.White
+            )
         },
         leadingIcon = {
-            Icon(imageVector = Icons.Filled.Search,
+            Icon(
+                imageVector = Icons.Filled.Search,
                 contentDescription = null,
-                tint = Color.White)
+                tint = Color.White
+            )
         },
         keyboardOptions = KeyboardOptions(
             imeAction = ImeAction.Search

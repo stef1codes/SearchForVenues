@@ -1,13 +1,12 @@
-package com.example.androidassesmenttest.pressentation.searchVenues.ui
+package com.example.androidassesmenttest.presentation.searchVenues.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.navigation.compose.rememberNavController
-import com.example.androidassesmenttest.pressentation.searchVenues.viewmodel.VenuesViewModel
-import com.example.androidassesmenttest.pressentation.venueDetails.ui.VenueDetailsActivity
+import com.example.androidassesmenttest.presentation.venueDetails.ui.VenueDetailsActivity
 import com.example.androidassesmenttest.usecases.usecasesImpl.ConnectionObservation
+import com.example.androidassesmenttest.viewmodel.VenuesViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -15,7 +14,6 @@ class VenueActivity : ComponentActivity() {
 
     private val venueViewModel: VenuesViewModel by viewModel()
     private val connectionObservation: ConnectionObservation by inject()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +25,8 @@ class VenueActivity : ComponentActivity() {
         setContent {
             VenuesScreen(
                 viewModel = venueViewModel,
-                navigation = ::navigate)
+                navigation = ::navigate
+            )
         }
     }
 

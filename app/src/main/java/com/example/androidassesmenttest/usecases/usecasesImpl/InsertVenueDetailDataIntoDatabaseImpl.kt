@@ -9,7 +9,6 @@ import com.example.androidassesmenttest.usecases.usecases.InsertVenueDetailDataI
 class InsertVenueDetailDataIntoDatabaseImpl(private val db: VenueDatabase) :
     InsertVenueDetailDataIntoDatabase {
 
-
     override suspend fun invoke(
         venueDetail: VenueDetailEntity,
         mappedCategories: List<CategoryEntity>,

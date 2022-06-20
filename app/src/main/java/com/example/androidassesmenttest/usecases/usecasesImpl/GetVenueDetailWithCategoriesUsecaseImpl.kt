@@ -4,7 +4,7 @@ import com.example.androidassesmenttest.data.local.Entity.Relations.VenueDetailx
 import com.example.androidassesmenttest.repository.VenuesRepository
 import com.example.androidassesmenttest.usecases.usecases.GetVenueDetailWithCategoriesUsecase
 
-class GetVenueDetailWithCategoriesUsecaseImpl(private val repository: VenuesRepository): GetVenueDetailWithCategoriesUsecase {
+class GetVenueDetailWithCategoriesUsecaseImpl(private val repository: VenuesRepository) : GetVenueDetailWithCategoriesUsecase {
     override suspend fun invoke(id: String): List<VenueDetailxCategoriesxIcon> {
         return repository.getVenueWithCategories(id)
     }

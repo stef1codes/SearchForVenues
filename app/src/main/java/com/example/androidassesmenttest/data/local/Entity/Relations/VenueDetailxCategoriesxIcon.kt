@@ -16,4 +16,4 @@ data class VenueDetailxCategoriesxIcon(
     )
     val category: List<CategoryEntity>,
 
-    )
+)

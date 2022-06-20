@@ -3,8 +3,8 @@ package com.example.androidassesmenttest.data.local
 import androidx.room.*
 import com.example.androidassesmenttest.data.local.Entity.CategoryEntity
 import com.example.androidassesmenttest.data.local.Entity.Relations.VenueDetailxCategoriesxIcon
-import com.example.androidassesmenttest.data.local.Entity.VenueEntity
 import com.example.androidassesmenttest.data.local.Entity.VenueDetailEntity
+import com.example.androidassesmenttest.data.local.Entity.VenueEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -34,7 +34,4 @@ interface VenueDao {
 
     @Query("DELETE FROM category_table")
     suspend fun deleteAllFromCategories()
-
-
 }
-

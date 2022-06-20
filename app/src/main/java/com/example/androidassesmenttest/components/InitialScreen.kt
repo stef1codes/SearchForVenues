@@ -12,7 +12,8 @@ import androidx.compose.ui.text.font.FontWeight
 
 @Composable
 fun InitialScreen(text: String) {
-    Column(modifier = Modifier.fillMaxSize(),
+    Column(
+        modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {

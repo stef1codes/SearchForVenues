@@ -20,7 +20,8 @@ class MapVenueDetailDtoToEntityImpl : MapVenueDetailDtoToEntity {
                 formattedAddress = dto.locationDto.formattedAddress,
                 locality = dto.locationDto.locality,
                 postcode = dto.locationDto.postcode,
-                region = dto.locationDto.region)
+                region = dto.locationDto.region
+            )
         )
     }
 }

@@ -1,4 +1,4 @@
-package com.example.androidassesmenttest.pressentation.searchVenues.state
+package com.example.androidassesmenttest.presentation.searchVenues.state
 
 import com.example.androidassesmenttest.data.local.Entity.VenueEntity
 
@@ -25,4 +25,3 @@ sealed class VenuesState {
         override val venues: List<VenueEntity>? = emptyList(),
     ) : VenuesState()
 }
-

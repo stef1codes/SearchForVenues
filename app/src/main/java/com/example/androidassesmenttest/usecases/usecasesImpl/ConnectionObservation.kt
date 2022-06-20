@@ -10,7 +10,7 @@ import androidx.lifecycle.LiveData
 
 class ConnectionObservation(context: Context) : LiveData<Boolean>() {
 
-     var connectivityManager = context.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+    var connectivityManager = context.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
 
     lateinit var networkCallback: ConnectivityManager.NetworkCallback
     private val validNetworks: MutableSet<Network> = HashSet()
@@ -24,7 +24,7 @@ class ConnectionObservation(context: Context) : LiveData<Boolean>() {
     }
 
     override fun onInactive() {
-       // connectivityManager.unregisterNetworkCallback(connectivityManagerCallback())
+        // connectivityManager.unregisterNetworkCallback(connectivityManagerCallback())
     }
 
     private fun checkValidNetworks() {
@@ -36,16 +36,15 @@ class ConnectionObservation(context: Context) : LiveData<Boolean>() {
             val networkCapabilities = connectivityManager.getNetworkCapabilities(network)
             val hasInternetCapability = networkCapabilities?.hasCapability(NET_CAPABILITY_INTERNET)
             if (hasInternetCapability == true) {
-                    validNetworks.add(network)
-                    checkValidNetworks()
-                }
+                validNetworks.add(network)
+                checkValidNetworks()
             }
+        }
 
         override fun onLost(network: Network) {
             super.onLost(network)
             validNetworks.remove(network)
             checkValidNetworks()
-
         }
     }
 }

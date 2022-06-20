@@ -8,4 +8,3 @@ data class VenueDto(
     @SerializedName("results")
     val resultDtos: List<ResultDto>
 )
-
