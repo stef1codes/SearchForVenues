@@ -7,13 +7,13 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface FourSquareApi {
-    @GET("/v3/places/search?")
+    @GET("search")
     suspend fun getVenues(
         @Query("near") near: String,
-        @Query("radius") radius: Int? = 100000,
-        @Query("limit") limit: Int? = 50
+        @Query("radius") radius: String,
+        @Query("limit") limit: String
     ): VenueDto
 
-    @GET("/v3/places/{fsq_id}")
+    @GET("{fsq_id}")
     suspend fun getVenueDetail(@Path("fsq_id") venueId: String): VenueDetailDto
 }

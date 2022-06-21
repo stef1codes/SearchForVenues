@@ -1,6 +1,6 @@
 package com.example.androidassesmenttest
 
-import com.example.androidassesmenttest.usecases.usecases.GetVenuesFromRemoteUsecase
+import com.example.androidassesmenttest.domain.usecases.usecases.GetVenuesUseCase
 import io.mockk.mockk
 import org.junit.Assert.*
 import org.junit.Test
@@ -12,7 +12,7 @@ import org.junit.Test
  */
 class ExampleUnitTest {
 
-    private val getVenuesFromRemoteUsecase = mockk<GetVenuesFromRemoteUsecase>()
+    private val getVenuesFromRemoteUsecase = mockk<GetVenuesUseCase>()
 
     @Test
     fun addition_isCorrect() {

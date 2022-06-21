@@ -1,12 +1,12 @@
 package com.example.androidassesmenttest.di
 
 import com.example.androidassesmenttest.application.VenueApplication
-import com.example.androidassesmenttest.presentation.venueDetails.viewmodel.VenueDetailsViewModel
-import com.example.androidassesmenttest.repository.VenuesRepository
-import com.example.androidassesmenttest.repository.VenuesRepositoryImpl
-import com.example.androidassesmenttest.usecases.usecases.*
-import com.example.androidassesmenttest.usecases.usecasesImpl.*
-import com.example.androidassesmenttest.viewmodel.VenuesViewModel
+import com.example.androidassesmenttest.data.repository.VenuesRepository
+import com.example.androidassesmenttest.data.repository.VenuesRepositoryImpl
+import com.example.androidassesmenttest.domain.usecases.usecases.*
+import com.example.androidassesmenttest.domain.usecases.usecasesImpl.*
+import com.example.androidassesmenttest.presentation.searchVenuesActivity.viewmodel.VenuesViewModel
+import com.example.androidassesmenttest.presentation.venueDetailsActivity.viewmodel.VenueDetailsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -17,10 +17,11 @@ val appModule = module {
     viewModel { VenuesViewModel(get()) }
     viewModel { VenueDetailsViewModel(get()) }
 
-    single<VenuesRepository> { VenuesRepositoryImpl(get(), get(), get(), get(), get(), get(), get()) }
-
-    single<GetVenueDetailFromRemoteUseCase> { GetVenueDetailFromRemoteUseCaseImpl(get()) }
-    single<GetVenuesFromRemoteUsecase> { GetVenueFromRemoteUseCaseImpl(get()) }
+    single<VenuesRepository> {
+        VenuesRepositoryImpl(get(), get(), get(), get(), get(), get(), get())
+    }
+    single<GetVenueDetailUseCase> { GetVenueDetailUseCaseImpl(get(), get()) }
+    single<GetVenuesUseCase> { GetVenuesUseCaseImpl(get(), get()) }
     single<GetVenueDetailWithCategoriesUsecase> { GetVenueDetailWithCategoriesUsecaseImpl(get()) }
 
     single<InsertVenueDataIntoDatabase> { InsertVenueDataIntoDatabaseImpl(get()) }
