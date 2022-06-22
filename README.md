@@ -1,7 +1,10 @@
 # SearchForVenues
 search for venues near by
 
-api: create an account https://developer.foursquare.com/
+create an account https://developer.foursquare.com/
+
+For this app make use of Foursquare API:https://developer.foursquare.com/docs/api/venues/searchBefore being able to use this API,
+you need to create an account:https://developer.foursquare.com/docs/api/getting-started
 
 Kotlin - Programming language for Android.
 
