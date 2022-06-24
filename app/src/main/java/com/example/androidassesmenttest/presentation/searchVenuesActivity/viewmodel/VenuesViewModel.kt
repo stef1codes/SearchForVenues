@@ -5,13 +5,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.androidassesmenttest.domain.usecases.usecases.GetVenuesUseCase
 import com.example.androidassesmenttest.presentation.searchVenuesActivity.state.VenuesState
 import com.example.androidassesmenttest.util.Constants.EMPTYLIST_MSG
+import com.example.androidassesmenttest.util.Constants.ERROR_MSG
 import kotlinx.coroutines.flow.*
 
 class VenuesViewModel(
     private val getVenuesUseCase: GetVenuesUseCase,
 ) : ViewModel() {
     private var mutableVenueStateFlow = MutableStateFlow<VenuesState>(VenuesState.Empty())
-    val venueState: MutableStateFlow<VenuesState> = mutableVenueStateFlow
+    var venueState: StateFlow<VenuesState> = mutableVenueStateFlow
 
     fun getVenues(
         near: String,
@@ -30,6 +31,6 @@ class VenuesViewModel(
             }
     }
         .onStart { mutableVenueStateFlow.emit(VenuesState.Loading) }
-        .catch { mutableVenueStateFlow.emit(VenuesState.Error(it.localizedMessage)) }
+        .catch { mutableVenueStateFlow.emit(VenuesState.Error(it.localizedMessage ?: ERROR_MSG)) }
         .launchIn(viewModelScope)
 }

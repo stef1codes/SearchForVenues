@@ -9,12 +9,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 
 @Composable
-internal fun ErrorScreen(message: String?) {
+internal fun ErrorScreen(message: String = "") {
     Text(
         modifier = Modifier.fillMaxSize(),
         textAlign = TextAlign.Center,
         color = MaterialTheme.colors.primary,
         fontWeight = FontWeight.ExtraBold,
-        text = message ?: "Something went wrong"
+        text = message
     )
 }

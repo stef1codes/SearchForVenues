@@ -8,6 +8,7 @@ import com.example.androidassesmenttest.domain.usecases.usecases.GetVenueDetailU
 import com.example.androidassesmenttest.presentation.venueDetailsActivity.state.VenueDetailState
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.*
+import org.koin.android.ext.koin.ERROR_MSG
 
 class VenueDetailsViewModel(
     private val getVenueDetailUseCase: GetVenueDetailUseCase,
@@ -29,7 +30,7 @@ class VenueDetailsViewModel(
         }
     }.flowOn(IO)
         .onStart { mutableVenueDetailsState.emit(VenueDetailState.Loading) }
-        .catch { mutableVenueDetailsState.emit(VenueDetailState.Error(it.localizedMessage)) }
+        .catch { mutableVenueDetailsState.emit(VenueDetailState.Error(it.localizedMessage ?: ERROR_MSG)) }
         .launchIn(viewModelScope)
 
     fun SetvenueDetailsId(Id: String) {

@@ -1,7 +1,7 @@
 package com.example.androidassesmenttest.di
 
 import com.example.androidassesmenttest.BuildConfig
-import com.example.androidassesmenttest.data.remote.FourSquareApi
+import com.example.androidassesmenttest.data.remote.RetrofitApi
 import com.example.androidassesmenttest.data.remote.RetrofitInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -31,5 +31,5 @@ fun provideOkHttpClient(authInterceptor: RetrofitInterceptor): OkHttpClient {
         ).build()
 }
 
-fun provideRetrofitApi(retrofit: Retrofit): FourSquareApi =
-    retrofit.create(FourSquareApi::class.java)
+fun provideRetrofitApi(retrofit: Retrofit): RetrofitApi =
+    retrofit.create(RetrofitApi::class.java)

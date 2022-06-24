@@ -19,7 +19,6 @@ class VenueActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         connectionObservation.observe(this) {
-
             setContent {
                 VenuesScreen(
                     viewModel = venueViewModel,

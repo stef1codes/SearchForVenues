@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface FourSquareApi {
+interface RetrofitApi {
     @GET("search")
     suspend fun getVenues(
         @Query("near") near: String,

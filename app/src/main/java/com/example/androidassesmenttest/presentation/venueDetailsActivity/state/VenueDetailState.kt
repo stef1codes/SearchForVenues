@@ -10,7 +10,7 @@ sealed class VenueDetailState {
     object Loading : VenueDetailState()
 
     data class Error(
-        val errorMessage: String?,
+        val errorMessage: String,
     ) : VenueDetailState()
 
     data class Success(

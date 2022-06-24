@@ -8,9 +8,10 @@ import com.example.androidassesmenttest.presentation.searchVenuesActivity.viewmo
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.mockk
-import kotlinx.coroutines.*
-import kotlinx.coroutines.test.*
-import org.junit.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
+import org.junit.Rule
+import org.junit.Test
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class VenuesViewModelTest {
@@ -40,29 +41,20 @@ class VenuesViewModelTest {
     }
 
     @Test
-    fun `When GetVenuesUseCase is called but return emptylist, venueState should be of type Empty`() = runTest {
-        coEvery { getVenuesFromRemoteUseCaseMockk.invoke("", "", "") } returns emptyList()
-        venuesViewModel = VenuesViewModel(getVenuesFromRemoteUseCaseMockk)
-        assertThat(venuesViewModel.venueState.value).isInstanceOf(VenuesState.Empty::class.java)
-    }
+    fun `When GetVenuesUseCase is called but return emptylist, venueState should be of type Empty`() =
+        runTest {
+            coEvery { getVenuesFromRemoteUseCaseMockk.invoke("", "", "") } returns emptyList()
+            venuesViewModel = VenuesViewModel(getVenuesFromRemoteUseCaseMockk)
+            assertThat(venuesViewModel.venueState.value).isInstanceOf(VenuesState.Empty::class.java)
+        }
 
     @Test
-    fun `When GetVenuesUseCase couldn't retrieve data, venueState should be of type  Error`() = runTest() {
-        coEvery { getVenuesFromRemoteUseCaseMockk.invoke("", "", "") } throws Throwable("")
+    fun `When GetVenuesUseCase couldn't retrieve data, venueState should be of type  Error`() =
+        runTest {
+            coEvery { getVenuesFromRemoteUseCaseMockk.invoke("", "", "") } throws Throwable("")
 
-        venuesViewModel = VenuesViewModel(getVenuesFromRemoteUseCaseMockk)
-        venuesViewModel.getVenues("this should give an error", "-1", "-100")
-        assertThat(venuesViewModel.venueState.value).isInstanceOf(VenuesState.Error::class.java)
-    }
-
-    @Test
-    fun `When GetVenuesUseCase couldn't retrieve data, venueState should be of type Loading`() = runTest(dispatchTimeoutMs = 10000) {
-        coEvery { getVenuesFromRemoteUseCaseMockk.invoke("", "", "") } returns listOf(
-            VenueEntity()
-        )
-        venuesViewModel = VenuesViewModel(getVenuesFromRemoteUseCaseMockk)
-        venuesViewModel.getVenues("", "", "")
-
-        assertThat(venuesViewModel.venueState.value).isInstanceOf(VenuesState.Success::class.java)
-    }
+            venuesViewModel = VenuesViewModel(getVenuesFromRemoteUseCaseMockk)
+            venuesViewModel.getVenues("this should give an error", "-1", "-100")
+            assertThat(venuesViewModel.venueState.value).isInstanceOf(VenuesState.Error::class.java)
+        }
 }

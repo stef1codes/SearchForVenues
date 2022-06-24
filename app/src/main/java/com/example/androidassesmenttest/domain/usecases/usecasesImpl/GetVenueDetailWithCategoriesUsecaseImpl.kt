@@ -6,6 +6,6 @@ import com.example.androidassesmenttest.domain.usecases.usecases.GetVenueDetailW
 
 class GetVenueDetailWithCategoriesUsecaseImpl(private val repository: VenuesRepository) : GetVenueDetailWithCategoriesUsecase {
     override suspend fun invoke(id: String): List<VenueDetailxCategoriesxIcon> {
-        return repository.getVenueDetailfromDatabase(id)
+        return repository.getVenueDetailFromDatabase(id)
     }
 }

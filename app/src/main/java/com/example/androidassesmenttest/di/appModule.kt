@@ -20,6 +20,7 @@ val appModule = module {
     single<VenuesRepository> {
         VenuesRepositoryImpl(get(), get(), get(), get(), get(), get(), get())
     }
+
     single<GetVenueDetailUseCase> { GetVenueDetailUseCaseImpl(get(), get()) }
     single<GetVenuesUseCase> { GetVenuesUseCaseImpl(get(), get()) }
     single<GetVenueDetailWithCategoriesUsecase> { GetVenueDetailWithCategoriesUsecaseImpl(get()) }

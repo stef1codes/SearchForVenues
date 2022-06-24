@@ -34,7 +34,6 @@ import com.example.androidassesmenttest.util.Constants.LIMIT
 import com.example.androidassesmenttest.util.Constants.NEAR
 import com.example.androidassesmenttest.util.Constants.RADIUS
 import com.example.androidassesmenttest.util.Constants.TITLE_APP
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlin.reflect.KFunction1
 
@@ -52,14 +51,13 @@ fun VenuesScreen(
     ) {
         InternetStateMessage(internetState)
         SearchToolbar(viewModel)
-        VenuesScreenState(state, viewModel, navigation, internetState)
+        VenuesScreenState(state, navigation, internetState)
     }
 }
 
 @Composable
 fun VenuesScreenState(
     state: State<VenuesState>,
-    vm: VenuesViewModel,
     navigation: (String) -> Unit,
     internetState: Boolean
 ) {
@@ -77,7 +75,7 @@ fun VenuesScreenState(
             is VenuesState.Error -> ErrorScreen(message = venueData.errorMessage)
             is VenuesState.Loading -> LoadingScreen()
             is VenuesState.Success -> SuccessScreen(venueData.venues, navigation, internetState)
-            is VenuesState.Empty -> InitialScreen(venueData.message ?: DEFAULT_WELCOME_MSG)
+            is VenuesState.Empty -> InitialScreen(venueData.message.ifEmpty { DEFAULT_WELCOME_MSG })
         }
     }
 }
@@ -179,7 +177,7 @@ fun SuccessScreen(
                     modifier = Modifier
                         .clickable {
                             coroutineScope.launch {
-                                if (internetState == true) {
+                                if (internetState) {
                                     navigation(venue.fsqId)
                                 }
                             }

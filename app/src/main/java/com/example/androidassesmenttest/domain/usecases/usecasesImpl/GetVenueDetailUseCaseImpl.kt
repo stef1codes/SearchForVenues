@@ -14,7 +14,7 @@ class GetVenueDetailUseCaseImpl(
         return if (connectionObservation.value == true) {
             repositoryImpl.getVenueDetailFromRemote(id)
         } else {
-            repositoryImpl.getVenueDetailfromDatabase(id)
+            repositoryImpl.getVenueDetailFromDatabase(id)
         }
     }
 }

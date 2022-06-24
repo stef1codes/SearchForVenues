@@ -24,6 +24,7 @@ import com.example.androidassesmenttest.presentation.uiComponents.InitialScreen
 import com.example.androidassesmenttest.presentation.uiComponents.LoadingScreen
 import com.example.androidassesmenttest.presentation.venueDetailsActivity.state.VenueDetailState
 import com.example.androidassesmenttest.presentation.venueDetailsActivity.viewmodel.VenueDetailsViewModel
+import com.example.androidassesmenttest.util.Constants.TITLE_DETAILSCREEN
 
 @Composable
 fun VenueDetailScreen(viewModel: VenueDetailsViewModel, internetState: Boolean) {
@@ -34,11 +35,11 @@ fun VenueDetailScreen(viewModel: VenueDetailsViewModel, internetState: Boolean) 
                 .fillMaxSize()
                 .padding(8.dp)
         ) {
-            if (internetState == false) {
+            if (!internetState) {
                 InternetStateMessage(internetState)
             }
             when (val venueDetail = state.value) {
-                VenueDetailState.Empty -> InitialScreen("Venue detail screen")
+                VenueDetailState.Empty -> InitialScreen(TITLE_DETAILSCREEN)
                 is VenueDetailState.Error -> ErrorScreen(venueDetail.errorMessage)
                 VenueDetailState.Loading -> LoadingScreen()
                 is VenueDetailState.Success -> SuccesScreen(venueDetail.category, venueDetail.venueDetail)
